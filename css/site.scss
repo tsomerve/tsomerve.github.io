@@ -1,0 +1,6 @@
+$background-color: #ffaaee;
+
+body{
+    background: adjust-hue($background-color, 20deg);
+    color: adjust-hue($background-color, 180deg);
+}
