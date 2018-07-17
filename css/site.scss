@@ -1,6 +1,221 @@
-$background-color: #ffaaee;
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css');
 
-body{
-    background: adjust-hue($background-color, 20deg);
-    color: adjust-hue($background-color, 180deg);
+@import 'typography';
+
+$min-screen-width: 320px;
+$max-screen-width: 1200px;
+
+$brand-white: #f3f3f3;
+$brand-black: #222;
+$brand-yellow: #fffe54;
+$brand-red: tomato;
+
+$mobile-breakpoint: 425px;
+$tablet-breakpoint: 768px;
+$laptop-breakpoint: 1024px;
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Abril Fatface, serif;
+}
+
+body {
+    font-family: Lato, sans-serif;
+}
+
+#page {
+    display: flex;
+}
+
+aside {
+    background: $brand-red;
+    color: $brand-white;
+    height: 100vh;
+    flex-basis: 342px;
+    padding: 0em 2em;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+
+    h1 {
+        margin: 0.83em 0;
+        @include fluid-type($min-screen-width, $max-screen-width, 30px, 40px);
+    }
+
+    
+    ul {
+        position: relative;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        
+        li {
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-weight: 900;
+            
+            @include fluid-type($min-screen-width, $max-screen-width, 14px, 18px);
+        }
+        
+        &.legal {
+            position: absolute;
+            bottom: 2em;
+            
+            li {
+                @include fluid-type($min-screen-width, $max-screen-width, 10px, 14px); 
+                margin-bottom: 0.5em;           
+            }
+        }
+    }   
+    
+    nav {
+        ul > li {
+            margin-bottom: 1em;
+        }
+    }
+
+    a, a:active, a:visited {
+        text-decoration: none;
+        color: $brand-white;
+        transition: color 0.3s ease;
+    }
+    
+    a:hover {
+        color: $brand-yellow;
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width: $tablet-breakpoint) {
+        display: none;
+
+        &.show {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+        }
+    }
+}
+
+#show-nav {
+    position: fixed;
+    top: 1em;
+    left: 1em;
+
+    display: none;
+
+    @media only screen and (max-width: $tablet-breakpoint) {
+        display: block;
+    }
+}
+
+#hide-nav {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-size: 20px;
+
+    display: none;
+
+    @media only screen and (max-width: $tablet-breakpoint) {
+        display: block;
+    }
+}
+
+#hero {
+    background-image: url('/imgs/pizza.jpg');
+    background-size: cover;
+    background-position: 50% 40%;
+    background-repeat: no-repeat;
+
+    min-height: 450px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    h2 {
+        margin-top: 0;
+
+        font-size: 90px;
+        text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+
+        @media only screen and (max-width: $mobile-breakpoint) {
+            font-size: 75px;
+        }
+    }
+
+    .container {
+        width: 100%;
+        padding: 3em;
+        margin: 2em;
+        margin-top: 0;
+        max-width: 345px;
+
+        color: $brand-white;
+        background: rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+
+        @media only screen and (max-width: $mobile-breakpoint) {
+            padding: 3em 1em;
+        }
+        
+    }
+
+    .description {
+        @include fluid-type($min-screen-width, $max-screen-width, 31px, 45px); 
+    }
+
+    @media only screen and (max-width: $tablet-breakpoint) {
+        display: block;
+        
+        .container {
+            margin: 0;
+            max-width: 100%;
+        }
+    }
+}
+
+#content {
+    color: $brand-white;
+    background: $brand-black;
+
+    max-height: 100vh;
+    overflow-y: scroll;
+}
+
+#lies {
+    padding: 2em;
+    font-family: Muli, sans-serif;
+
+    @include fluid-type($min-screen-width, $max-screen-width, 15px, 22px);     
+
+    p {
+        border: 2px solid $brand-white;
+        border-radius: 25px;
+        padding: 1em;
+        margin: 0;
+    }
+
+    blockquote {
+        border-left: 5px solid $brand-yellow;
+        padding: 2em;
+        margin: 0 auto;
+        margin-top: 1em;
+        text-align: right;
+
+        max-width: 60%;
+    }
 }

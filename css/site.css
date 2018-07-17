@@ -1,5 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Knewave");
+@font-face {
+  font-family: PixelMillenium;
+  src: url("/fonts/Pixel Millennium.ttf");
+}
+
 body {
-  background: #ffaad2;
-  color: #aaffbb;
+  color: #D9C1BD;
+}
+
+h1 {
+  font-family: 'PixelMillenium';
 }
 /*# sourceMappingURL=site.css.map */
